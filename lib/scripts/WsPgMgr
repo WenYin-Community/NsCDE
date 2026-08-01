@@ -1291,7 +1291,7 @@ Widget 24
          Do {SendToModule $[infostore.WSM] SendString 41 5 CHN } $CalledBy { } $NewButtonLabel
          HideWidget 24
          Set $Txt = 0
-         ChangeTitle 22 {Close}
+         ChangeLocaleTitle 22 {Close}
       End
       2 :
       Begin

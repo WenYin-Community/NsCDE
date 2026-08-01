@@ -25,6 +25,9 @@ msgstr "窗口几何管理器"
 msgid " Set Window Initial Geometry "
 msgstr " 设置窗口初始几何 "
 
+msgid "      Set Window Initial Geometry      "
+msgstr "      设置窗口初始几何形状      "
+
 msgid "X11 Class Name"
 msgstr "X11 类名"
 
@@ -33,6 +36,9 @@ msgstr "X11 资源名"
 
 msgid "Window Parameters (screen size:"
 msgstr "窗口参数（屏幕尺寸："
+
+msgid "Window Parameters (screen size: 00000x00000)"
+msgstr "窗口参数（屏幕尺寸：00000x00000）"
 
 msgid "Pixel Values:"
 msgstr "像素值："

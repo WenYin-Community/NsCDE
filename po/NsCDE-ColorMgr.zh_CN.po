@@ -20,122 +20,124 @@ msgstr ""
 # ColorMgr
 
 msgid "Style Manager - Color"
-msgstr "Upravljač Stila - Boja"
+msgstr "样式管理器 - 颜色"
 
 msgid " Palettes "
-msgstr "  Palete  "
+msgstr " 调色板 "
 
 msgid " Preview | Preview | Revert "
-msgstr " Pregled | Pregled | Vrati "
+msgstr " 预览 | 预览 | 还原 "
 
 msgid " Add ... "
-msgstr " Dodaj ... "
+msgstr " 添加... "
 
 msgid " Delete ... "
-msgstr " Obriši ... "
+msgstr " 删除... "
 
 msgid "Modify"
-msgstr "Modificiraj"
+msgstr "修改"
 
 msgid "OK"
-msgstr "U Redu"
+msgstr "确定"
 
 msgid "Apply"
-msgstr "Primjeni"
+msgstr "应用"
 
 msgid "Close"
-msgstr "Zatvori"
+msgstr "关闭"
 
 msgid "Cancel"
-msgstr "Otkaži"
+msgstr "取消"
 
 msgid "Help"
-msgstr "Pomoć"
+msgstr "帮助"
 
 msgid "Number Of Colors ..."
-msgstr "Broj Boja ..."
+msgstr "颜色数量..."
 
 msgid " Color Style Integration Options ... "
-msgstr " Integracijske Opcije Stila Boje ... "
+msgstr " 颜色样式集成选项... "
 
 msgid " Color Style - System Integration "
-msgstr " Stil Boje - Sistemska Integracija "
+msgstr " 颜色样式 - 系统集成 "
 
 msgid " Color Style Integration "
-msgstr " Integracija Stila Boje "
+msgstr " 颜色样式集成 "
 
 msgid " Screen Backdrops"
-msgstr " Pozadine Ekrana"
+msgstr " 屏幕背景"
 
 msgid " X Resources"
-msgstr " X Resursi"
+msgstr " X 资源"
 
 msgid " GTK2 Theme"
-msgstr " GTK2 Tema"
+msgstr " GTK2 主题"
 
 msgid " GTK3 Theme"
-msgstr " GTK3 Tema"
+msgstr " GTK3 主题"
 
 msgid " Qt4 Theme"
-msgstr " Qt4 Tema"
+msgstr " Qt4 主题"
 
 msgid " Qt5 Theme (GTK3 Engine)"
-msgstr " Qt5 Tema (GTK3 Dodatak)"
+msgstr " Qt5 主题 (GTK3 引擎)"
 
 msgid " Qt5 Theme (Kvantum Engine)"
-msgstr " Qt5 Tema (Kvantum Dod.)"
+msgstr " Qt5 主题 (Kvantum 引擎)"
 
 msgid " Qt6 Theme (Kvantum Engine)"
-msgstr " Qt6 Tema (Kvantum Dod.)"
+msgstr " Qt6 主题 (Kvantum 引擎)"
 
 msgid " GTK4 Theme (Not Yet Implemented)"
-msgstr " GTK4 Tema (Nije Još Implementirano)"
+msgstr " GTK4 主题 (尚未实现)"
 
 msgid " Run $FVWM_USERDIR/libexec/colormgr.local"
-msgstr " Izvrši $FVWM_USERDIR/libexec/colormgr.local)"
+msgstr " 运行 $FVWM_USERDIR/libexec/colormgr.local"
 
 msgid " Run $FVWM_USERDIR/libexec/colormgr.local (missing script)"
-msgstr " Izvrši $FVWM_USERDIR/libexec/colormgr.local (nedostaje skripta)"
+msgstr " 运行 $FVWM_USERDIR/libexec/colormgr.local (脚本缺失)"
+
+msgid "Palette Name"
+msgstr "色板名称"
 
 # Number Of Colors To Use dialog
 msgid " Number Of Colors To Use "
-msgstr " Broj Boja Koji se Koristi "
+msgstr " 要使用的颜色数量 "
 
 msgid "Use 8 Colors Scheme"
-msgstr "Koristi Shemu sa 8 Boja"
+msgstr "使用 8 色方案"
 
 msgid "Use 4 Colors Scheme"
-msgstr "Koristi Shemu sa 4 Boje"
+msgstr "使用 4 色方案"
 
 msgid "Default"
-msgstr "Zadano"
+msgstr "默认"
 
 msgid " Color 8 for Front Panel and Icons"
-msgstr " Boja 8 za Prednji Panel i Ikone"
+msgstr " 前面板和图标使用颜色 8"
 
 msgid " Color 6 for Workspace Manager"
-msgstr " Boja 6 za Uprav. Rad. Površine"
+msgstr " 工作区管理器使用颜色 6"
 
 # Modifiy Color Dialog
 
 msgid "Style Manager - Modify Color"
-msgstr "Upravljač Stila - Modificiraj Boju"
+msgstr "样式管理器 - 修改颜色"
 
 msgid "Color Sample"
-msgstr "Uzorak Boje"
+msgstr "颜色样本"
 
 msgid "Old"
-msgstr "Staro"
+msgstr "旧"
 
 msgid "New"
-msgstr "Novo"
+msgstr "新"
 
 msgid "Grab Color"
-msgstr "Ugrabi Boju"
+msgstr "取色"
 
 msgid "Color Editor"
-msgstr "Uređivač Boja"
+msgstr "颜色编辑器"
 
 msgid "Hue"
-msgstr "Nijansa"
-
+msgstr "色相"

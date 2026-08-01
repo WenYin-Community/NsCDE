@@ -122,6 +122,23 @@ msgstr "所有文档 (pdf)"
 msgid "All Documentation (html)"
 msgstr "所有文档 (html)"
 
+msgid "Documentation"
+msgstr "文档"
+
+msgid "Default Key and Mouse Bindings"
+msgstr "默认键盘和鼠标绑定"
+
+# FVWM Menus
+
+msgid "&Full Screen"
+msgstr "全屏(&F)"
+
+msgid "GWM"
+msgstr "GWM"
+
+msgid "GW&M"
+msgstr "GWM(&W)"
+
 # NsCDE Menu
 msgid "&Style Manager"
 msgstr "样式管理器(&S)"
@@ -562,6 +579,12 @@ msgstr "空启动器"
 
 # Action Form
 
+msgid "Please select option you want:"
+msgstr "请选择您想要的选项："
+
+msgid "Cancel"
+msgstr "取消"
+
 msgid "Subpanel Reset Confirmation"
 msgstr "子面板重置确认"
 
@@ -873,6 +896,12 @@ msgstr "错误：Func:f_ClipboardRootScreenShot：未找到用于将根窗口截
 msgid "Error: Func:f_ClipboardAreaScreenShot: No import(1) ImageMagick command found for making screen area screenshot into clipboard. PATH:"
 msgstr "错误：Func:f_ClipboardAreaScreenShot：未找到用于将区域截图保存到剪贴板的 ImageMagick import(1) 命令。PATH："
 
+msgid "Error: Func:f_ClipboardAreaScreenShot: No xclip(1) command found for making screen area screenshot into clipboard. PATH:"
+msgstr "错误：Func:f_ClipboardAreaScreenShot：未找到用于将区域截图保存到剪贴板的 xclip(1) 命令。PATH："
+
+msgid "Error: Func:f_ClipboardRootScreenShot: No xclip(1) command found for making root window screenshot into clipboard. PATH:"
+msgstr "错误：Func:f_ClipboardRootScreenShot：未找到用于将根窗口截图保存到剪贴板的 xclip(1) 命令。PATH："
+
 
 msgid "Font Style Manager"
 msgstr "字体样式管理器"
@@ -894,10 +923,6 @@ msgstr "在执行移除操作之前未选择字体集文件。"
 
 msgid "Error editing"
 msgstr "编辑时出错"
-
-# Double ...
-# msgid "Error creating"
-# msgstr "Greška prilikom stvaranja"
 
 msgid "Fontset name must be defined before saving it!"
 msgstr "保存前必须定义字体集名称！"
@@ -984,6 +1009,9 @@ msgid "New Front Panel Button"
 msgstr "新建前面板按钮"
 
 # Input Form
+
+msgid "Enter Required Parameter:"
+msgstr "请输入所需参数："
 
 msgid "Enter Fontset Name:"
 msgstr "请输入字体集名称："
@@ -1428,4 +1456,21 @@ msgstr "正在备份配置文件到 "
 
 msgid "Opts() SAVING CONFIG FILE "
 msgstr "正在保存配置文件 "
+
+# Splash
+
+msgid " NsCDE is a Free Software released under GPLv3 licence."
+msgstr " NsCDE 是根据 GPLv3 许可发布的自由软件。"
+
+msgid "Not so Common Desktop Environment VERSION running on OS."
+msgstr "Not so Common Desktop Environment VERSION 正在 OS 上运行。"
+
+msgid "Using FVWM version VERSION as the Window Manager."
+msgstr "使用 FVWM 版本 VERSION 作为窗口管理器。"
+
+msgid "NsCDE is a Free Software released under GPLv3 licence."
+msgstr "NsCDE 是根据 GPLv3 许可发布的自由软件。"
+
+msgid "Starting Up ..."
+msgstr "正在启动 ..."
 

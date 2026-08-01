@@ -25,6 +25,9 @@ msgstr "样式管理器 - 背景"
 msgid "Backdrop:"
 msgstr "背景："
 
+msgid " Backdrops "
+msgstr " 背景 "
+
 msgid " Use this backdrop for all workspaces"
 msgstr " 对所有工作区使用此背景"
 
@@ -83,3 +86,6 @@ msgstr "取消"
 
 msgid " Default "
 msgstr " 默认 "
+
+msgid "   Default     "
+msgstr "   默认     "

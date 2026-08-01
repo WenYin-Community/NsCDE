@@ -46,6 +46,15 @@ msgstr "每个工作区的页面数："
 msgid "Total Pages:"
 msgstr "总页面数："
 
+msgid "Nr. of Desks: "
+msgstr "桌面数："
+
+msgid "Pages per Desk: "
+msgstr "每桌面页数："
+
+msgid "Total Pages: "
+msgstr "总页面数："
+
 msgid "Monitor Workspaces: "
 msgstr "监视器工作区："
 
@@ -60,6 +69,9 @@ msgstr "确定"
 
 msgid "Cancel"
 msgstr "取消"
+
+msgid "Close"
+msgstr "关闭"
 
 msgid "Help"
 msgstr "帮助"
@@ -87,3 +99,21 @@ msgstr "七"
 
 msgid "Eight"
 msgstr "八"
+
+msgid " One "
+msgstr " 一 "
+
+msgid " Two "
+msgstr " 二 "
+
+msgid " Three "
+msgstr " 三 "
+
+msgid " Four "
+msgstr " 四 "
+
+msgid " Five "
+msgstr " 五 "
+
+msgid " Six "
+msgstr " 六 "

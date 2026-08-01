@@ -37,6 +37,12 @@ msgstr "帮助"
 msgid "Dismiss"
 msgstr "关闭"
 
+msgid "First: "
+msgstr "第一："
+
+msgid "Second: "
+msgstr "第二："
+
 msgid "Test Double-Click "
 msgstr "测试双击 "
 

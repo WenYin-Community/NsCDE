@@ -19,6 +19,9 @@ msgstr ""
 
 # NProcMgr
 
+msgid " NsCDE Proces Management "
+msgstr " NsCDE 进程管理 "
+
 msgid "Processes"
 msgstr "进程"
 

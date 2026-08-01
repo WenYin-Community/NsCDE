@@ -46,6 +46,9 @@ msgstr "类型："
 msgid "Command:"
 msgstr "命令："
 
+msgid "Check for this cmd:"
+msgstr "检查此命令："
+
 msgid "Icon File:"
 msgstr "图标文件："
 
@@ -66,6 +69,9 @@ msgstr "帮助"
 
 msgid "Subpanel Settings"
 msgstr "子面板设置"
+
+msgid "Subpanel Settings: "
+msgstr "子面板设置："
 
 msgid "Reset"
 msgstr "重置"

@@ -172,10 +172,10 @@ msgid "Error: cannot change directory to "
 msgstr "错误：无法切换目录到 "
 
 msgid "Backup copy of "
-msgstr " "
+msgstr "备份副本 "
 
 msgid "saved as "
-msgstr "的备份副本已保存为 "
+msgstr "已保存为 "
 
 msgid "Error: cannot change directory back to "
 msgstr "错误：无法切换目录回到 "
