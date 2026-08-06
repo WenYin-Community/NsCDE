@@ -8,12 +8,10 @@ usr/libexec/NsCDE/bootstrap
 usr/libexec/NsCDE/chtheme
 usr/libexec/NsCDE/colorconv
 usr/libexec/NsCDE/colormgr
-usr/libexec/NsCDE/colorpicker
 usr/libexec/NsCDE/confget
 usr/libexec/NsCDE/confset
 usr/libexec/NsCDE/fontmgr
 usr/libexec/NsCDE/fp_manage_subpanel
-usr/libexec/NsCDE/fpclock
 usr/libexec/NsCDE/fpdoc
 usr/libexec/NsCDE/fpexec
 usr/libexec/NsCDE/fpseticon

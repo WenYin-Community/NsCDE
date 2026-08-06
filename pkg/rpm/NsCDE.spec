@@ -22,7 +22,7 @@ BuildRequires:  glibc-devel
 Requires:	xterm ksh sed fvwm cpp xsettingsd stalonetray dunst xclip xdotool
 Requires:	python3-pyxdg python3-psutil qt5ct
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
-Requires: python3-yaml PyQt5 qt5-qtstyleplugins dex-autostart groff-base dejavu-serif-fonts
+Requires: python3-pyyaml python3-qt5 qt5-qtstyleplugins dex-autostart groff-base dejavu-serif-fonts
 %endif
 %if 0%{?suse_version}
 Requires: python3-qt5 python3-pyaml libqt5-qtstyleplugins-platformtheme-gtk2 dex groff-full dejavu-fonts
