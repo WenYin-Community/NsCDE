@@ -1,4 +1,4 @@
-Source: nscde
+Source: nscde-zh
 Section: x11
 Priority: optional
 Maintainer: Hegel3DReloaded <nscde@protonmail.com>
@@ -16,15 +16,15 @@ Build-Depends:
  python3-yaml
 Standards-Version: 4.7.4.1
 Rules-Requires-Root: no
-Homepage: https://github.com/NsCDE/NsCDE
-Vcs-Browser: https://github.com/NsCDE/NsCDE
-Vcs-Git: https://github.com/NsCDE/NsCDE.git
+Homepage: https://github.com/WenYin-Community/NsCDE
+Vcs-Browser: https://github.com/WenYin-Community/NsCDE
+Vcs-Git: https://github.com/WenYin-Community/NsCDE.git
 
-Package: nscde
+Package: nscde-zh
 Architecture: any
 Depends:
- nscde-data (= ${source:Version}),
- nscde-icon-theme (= ${source:Version}),
+ nscde-zh-data (= ${source:Version}),
+ nscde-zh-icon-theme (= ${source:Version}),
  ${shlibs:Depends},
  ${misc:Depends},
  fvwm | fvwm3,
@@ -43,7 +43,7 @@ Depends:
 Recommends:
  dunst,
  fonts-dejavu-core,
- nscde-doc,
+ nscde-zh-doc,
  qt5-style-plugins,
  rofi,
  stalonetray,
@@ -71,7 +71,7 @@ Description: Not so Common Desktop Environment
  lightweight hybrid desktop environment.
 
 
-Package: nscde-data
+Package: nscde-zh-data
 Architecture: all
 Depends:
  ${misc:Depends},
@@ -86,7 +86,7 @@ Description: data files for NsCDE
  including FVWM configuration, palettes, backdrops, templates, integration
  files, localization files, and supporting scripts.
 
-Package: nscde-icon-theme
+Package: nscde-zh-icon-theme
 Architecture: all
 Depends:
  ${misc:Depends}
@@ -94,7 +94,7 @@ Description: icon theme for NsCDE
  This package contains the NsCDE icon theme used by the NsCDE desktop
  environment and its XDG desktop integration.
 
-Package: nscde-doc
+Package: nscde-zh-doc
 Architecture: all
 Section: doc
 Depends:

@@ -1,11 +1,11 @@
-Name:		NsCDE
-Version:	2.3
-Release:	3%{?dist}
+Name:		nscde-zh
+Version:	2.4
+Release:	1%{?dist}
 Summary:	Not so Common Desktop Environment
 
 License:	GPLv3
-URL:		https://github.com/NsCDE
-Source0:	https://github.com/NsCDE/NsCDE/releases/download/2.3/NsCDE-2.3.tar.gz
+URL:		https://github.com/WenYin-Community/NsCDE
+Source0:	https://github.com/WenYin-Community/NsCDE/releases/download/2.4/NsCDE-2.4.tar.gz
 
 BuildRequires:  ksh
 BuildRequires:  gcc
@@ -63,15 +63,15 @@ autoreconf -ivf
 
 %files
 %{_bindir}/*
-%{_libexecdir}/%{name}/
-%{_libdir}/%{name}/
+%{_libexecdir}/NsCDE/
+%{_libdir}/NsCDE/
 %{_datadir}/applications/
 %{_datadir}/desktop-directories/
 %{_datadir}/xsessions/nscde.desktop
 %{_datadir}/icons/
 %{_datadir}/doc/nscde/
 %{_datadir}/locale/*
-%{_datadir}/%{name}/
+%{_datadir}/NsCDE/
 %{_sysconfdir}/xdg/menus/nscde-applications.menu
 
 %changelog
