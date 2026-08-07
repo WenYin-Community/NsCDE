@@ -24,6 +24,7 @@ jobs:
   build-deb:
     name: Debian/Ubuntu .deb (${{ matrix.arch }})
     strategy:
+      fail-fast: false
       matrix:
         include:
           - arch: amd64
@@ -69,6 +70,7 @@ jobs:
   build-rpm:
     name: Fedora/RHEL .rpm (${{ matrix.arch }})
     strategy:
+      fail-fast: false
       matrix:
         include:
           - arch: amd64
@@ -102,8 +104,8 @@ jobs:
 
           # Local source tarball (top dir named NsCDE-$VERSION) so rpmbuild
           # does not try to download it from GitHub.
-          cp -a "$PWD" /tmp/NsCDE-$VERSION
-          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/NsCDE-$VERSION.tar.gz" NsCDE-$VERSION)
+          cp -a "$PWD" /tmp/nscde-zh-$VERSION
+          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/NsCDE-$VERSION.tar.gz" nscde-zh-$VERSION)
 
           rpmbuild --define "_topdir $GITHUB_WORKSPACE/rpmbuild" -bb rpmbuild/SPECS/NsCDE.spec
 
@@ -115,15 +117,8 @@ jobs:
 
   # ---------------------------------------------------------------- Arch
   build-arch:
-    name: Arch Linux .pkg.tar.zst (${{ matrix.arch }})
-    strategy:
-      matrix:
-        include:
-          - arch: amd64
-            runs-on: ubuntu-24.04
-          - arch: arm64
-            runs-on: ubuntu-24.04-arm
-    runs-on: ${{ matrix.runs-on }}
+    name: Arch Linux .pkg.tar.zst (x86_64)
+    runs-on: ubuntu-24.04
     container: archlinux:latest
     steps:
       - uses: actions/checkout@v4
@@ -153,5 +148,5 @@ jobs:
       - name: Upload Arch artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: nscde-zh-arch-${{ matrix.arch }}
+          name: nscde-zh-arch
           path: pkg/pacman/*.pkg.tar.*
