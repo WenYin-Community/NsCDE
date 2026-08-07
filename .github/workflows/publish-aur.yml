@@ -53,8 +53,10 @@ jobs:
           sed -i "s/^pkgrel=.*/pkgrel=1/" pkg/pacman/PKGBUILD
           sed -i "s|^source=.*|source=(\"nscde-zh-\$pkgver::git+https://github.com/WenYin-Community/NsCDE.git#tag=\$pkgver\")|" pkg/pacman/PKGBUILD
           sed -i "s/^md5sums=.*/sha256sums=('SKIP')/" pkg/pacman/PKGBUILD
-          cd pkg/pacman
-          makepkg --printsrcinfo > .SRCINFO
+          # makepkg refuses to run as root; run it as an unprivileged user
+          useradd -m builder
+          chown -R builder:builder "$GITHUB_WORKSPACE"
+          su builder -c "cd '$GITHUB_WORKSPACE/pkg/pacman' && makepkg --printsrcinfo" > pkg/pacman/.SRCINFO
 
       - name: Publish to AUR
         env:
