@@ -75,6 +75,10 @@ jobs:
             User aur
             StrictHostKeyChecking accept-new
           EOF
+          chmod 600 ~/.ssh/config
+          # Pre-seed the host key so ssh does not fail on first connect
+          ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts 2>/dev/null || true
+          chmod 644 ~/.ssh/known_hosts
           # Clone the AUR repo and sync PKGBUILD + .SRCINFO
           git clone ssh://aur@aur.archlinux.org/nscde-zh.git /tmp/aur
           cp pkg/pacman/PKGBUILD /tmp/aur/
