@@ -127,7 +127,7 @@ jobs:
         run: |
           pacman -Sy --noconfirm --needed \
             base-devel autoconf automake ksh \
-            libxext libx11 libxpm stalonetray xsettingsd fvwm glibc \
+            libxext libx11 libxpm stalonetray xsettingsd fvwm3 glibc \
             imagemagick xorg-xprop xorg-xrdb xorg-xset xorg-xdpyinfo \
             xorg-xrefresh xorg-xmodmap xorg-xrandr xorgproto gcc xterm \
             python python-pyxdg python-yaml python-psutil python-pyqt5 \

@@ -6,7 +6,7 @@ pkgdesc="Not so Common Desktop Environment: Modern and functional CDE based on F
 arch=('x86_64' 'aarch64')
 url="https://github.com/WenYin-Community/NsCDE"
 license=('GPL')
-depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm' 'glibc' 'ksh'
+depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh'
 'imagemagick' 'xorg-xprop' 'xorg-xrdb' 'xorg-xset' 'xorg-xdpyinfo' 'xorg-xrefresh'
 'xorg-xmodmap' 'xorg-xrandr' 'gcc' 'xterm' 'python3' 'python-pyxdg' 'python-yaml'
 'python-psutil' 'python-pyqt5' 'xdotool' 'xdg-utils' 'gettext' 'groff' 'ttf-dejavu')
