@@ -113,7 +113,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nscde-zh-rpm-${{ matrix.arch }}
-          path: rpmbuild/RPMS/**/*.rpm
+          path: |
+            rpmbuild/RPMS/**/*.rpm
+            !rpmbuild/RPMS/**/*debug*.rpm
 
   # ---------------------------------------------------------------- Arch
   build-arch:
@@ -152,7 +154,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nscde-zh-arch
-          path: pkg/pacman/*.pkg.tar.*
+          path: |
+            pkg/pacman/*.pkg.tar.*
+            !pkg/pacman/*-debug-*.pkg.tar.*
 
   # ---------------------------------------------------------------- release
   release:
