@@ -41,7 +41,7 @@ jobs:
 
       - name: Install tools
         run: |
-          pacman -Sy --noconfirm --needed git base-devel
+          pacman -Sy --noconfirm --needed git base-devel openssh
 
       - name: Prepare AUR PKGBUILD and .SRCINFO
         run: |
@@ -62,6 +62,10 @@ jobs:
         env:
           AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
         run: |
+          if [ -z "$AUR_SSH_PRIVATE_KEY" ]; then
+            echo "::error::AUR_SSH_PRIVATE_KEY secret is empty or not accessible to this repository"
+            exit 1
+          fi
           mkdir -p ~/.ssh
           echo "$AUR_SSH_PRIVATE_KEY" > ~/.ssh/aur
           chmod 600 ~/.ssh/aur
