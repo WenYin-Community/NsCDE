@@ -153,3 +153,34 @@ jobs:
         with:
           name: nscde-zh-arch
           path: pkg/pacman/*.pkg.tar.*
+
+  # ---------------------------------------------------------------- release
+  release:
+    name: Create GitHub Release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [build-deb, build-rpm, build-arch]
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+          pattern: 'nscde-zh-*'
+      - name: Create Release and upload assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: NsCDE-zh ${{ github.ref_name }}
+          body: |
+            NsCDE-zh ${{ github.ref_name }} 自动打包构建产物。
+
+            支持的包格式：
+            - Debian/Ubuntu (.deb，amd64 + arm64)
+            - Fedora/RHEL (.rpm，amd64 + arm64)
+            - Arch Linux (.pkg.tar.zst，x86_64)
+          files: |
+            artifacts/**/*.deb
+            artifacts/**/*.rpm
+            artifacts/**/*.pkg.tar.zst
+          fail_on_unmatched_files: false
