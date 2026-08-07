@@ -127,8 +127,11 @@ jobs:
         run: |
           pacman -Sy --noconfirm --needed \
             base-devel autoconf automake ksh \
-            python python-pyqt5 python-pyxdg python-yaml python-psutil \
-            xterm xorg-xrandr xdotool xdg-utils gettext groff ttf-dejavu
+            libxext libx11 libxpm stalonetray xsettingsd fvwm glibc \
+            imagemagick xorg-xprop xorg-xrdb xorg-xset xorg-xdpyinfo \
+            xorg-xrefresh xorg-xmodmap xorg-xrandr xorgproto gcc xterm \
+            python python-pyxdg python-yaml python-psutil python-pyqt5 \
+            xdotool xdg-utils gettext groff ttf-dejavu
 
       - name: Build Arch package
         run: |
