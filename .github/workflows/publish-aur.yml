@@ -69,16 +69,9 @@ jobs:
           mkdir -p ~/.ssh
           echo "$AUR_SSH_PRIVATE_KEY" > ~/.ssh/aur
           chmod 600 ~/.ssh/aur
-          cat > ~/.ssh/config <<EOF
-          Host aur.archlinux.org
-            IdentityFile ~/.ssh/aur
-            User aur
-            StrictHostKeyChecking accept-new
-          EOF
-          chmod 600 ~/.ssh/config
-          # Pre-seed the host key so ssh does not fail on first connect
-          ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts 2>/dev/null || true
-          chmod 644 ~/.ssh/known_hosts
+          # Use explicit ssh options (not ~/.ssh/config) to avoid host key
+          # verification failures in the throwaway container.
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/aur -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null"
           # Clone the AUR repo and sync PKGBUILD + .SRCINFO
           git clone ssh://aur@aur.archlinux.org/nscde-zh.git /tmp/aur
           cp pkg/pacman/PKGBUILD /tmp/aur/
