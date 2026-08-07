@@ -1,0 +1,157 @@
+# GitHub Actions workflow: build NsCDE-zh packages (deb / rpm / Arch)
+# Uses packaging recipes from the pkg/ directory. Package names are unified
+# as "nscde-zh" (and the NsCDE-zh branding) to distinguish from upstream NsCDE.
+#
+# Builds for amd64 and arm64 via a matrix. Triggered on:
+#   - push to master
+#   - tags (release builds)
+#   - pull requests against master
+#   - manual dispatch (Actions tab -> Run workflow)
+
+name: Build packages
+
+on:
+  push:
+    branches: [master]
+    tags: ['*']
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+
+  # ---------------------------------------------------------------- deb
+  build-deb:
+    name: Debian/Ubuntu .deb (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            runs-on: ubuntu-24.04
+          - arch: arm64
+            runs-on: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runs-on }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            devscripts debhelper gettext ksh gcc autoconf automake \
+            libx11-dev libxext-dev libxpm-dev \
+            python3 python3-psutil python3-pyqt5 python3-xdg python3-yaml \
+            xdg-utils x11-utils x11-xserver-utils xdotool xterm imagemagick
+
+      - name: Build .deb packages
+        run: |
+          ln -s pkg/debian debian
+          # -d: skip Build-Depends auto-resolution; dependencies are already
+          # installed above (ksh93u+m package name is distro-specific).
+          debuild -uc -us -b -d
+
+      - name: Collect artifacts
+        run: |
+          # debuild writes results to the parent directory
+          cp -v ../*.deb ../*.dsc ../*.changes ../*.buildinfo ./ 2>/dev/null || true
+
+      - name: Upload .deb artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nscde-zh-deb-${{ matrix.arch }}
+          path: |
+            *.deb
+            *.dsc
+            *.changes
+            *.buildinfo
+
+  # ---------------------------------------------------------------- rpm
+  build-rpm:
+    name: Fedora/RHEL .rpm (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            runs-on: ubuntu-24.04
+          - arch: arm64
+            runs-on: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runs-on }}
+    container: fedora:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          dnf install -y \
+            rpm-build make gcc autoconf automake gettext ksh \
+            libX11-devel libXt-devel libXext-devel libXpm-devel \
+            python3-pyxdg python3-psutil python3-pyyaml python3-qt5 \
+            qt5-qtstyleplugins qt5ct wqy-bitmap-fonts \
+            xterm xsettingsd stalonetray dunst xclip xdotool dex-autostart \
+            groff-base dejavu-serif-fonts
+
+      - name: Build .rpm package
+        run: |
+          VERSION=$(grep -oP 'AC_INIT\(\[NsCDE\], \K[0-9.]+' configure.ac)
+          # Sync spec version + Source0 with the source tree version
+          sed -i "s|releases/download/[0-9.]*/NsCDE-[0-9.]*\.tar\.gz|releases/download/${VERSION}/NsCDE-${VERSION}.tar.gz|" pkg/rpm/NsCDE.spec
+          sed -i "s/^Version:.*/Version:\t${VERSION}/" pkg/rpm/NsCDE.spec
+
+          mkdir -p rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+          cp pkg/rpm/NsCDE.spec rpmbuild/SPECS/
+
+          # Local source tarball (top dir named NsCDE-$VERSION) so rpmbuild
+          # does not try to download it from GitHub.
+          cp -a "$PWD" /tmp/NsCDE-$VERSION
+          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/NsCDE-$VERSION.tar.gz" NsCDE-$VERSION)
+
+          rpmbuild --define "_topdir $GITHUB_WORKSPACE/rpmbuild" -bb rpmbuild/SPECS/NsCDE.spec
+
+      - name: Upload .rpm artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nscde-zh-rpm-${{ matrix.arch }}
+          path: rpmbuild/RPMS/**/*.rpm
+
+  # ---------------------------------------------------------------- Arch
+  build-arch:
+    name: Arch Linux .pkg.tar.zst (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            runs-on: ubuntu-24.04
+          - arch: arm64
+            runs-on: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runs-on }}
+    container: archlinux:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          pacman -Sy --noconfirm --needed \
+            base-devel autoconf automake ksh \
+            python python-pyqt5 python-pyxdg python-yaml python-psutil \
+            xterm xorg-xrandr xdotool xdg-utils gettext groff ttf-dejavu
+
+      - name: Build Arch package
+        run: |
+          VERSION=$(grep -oP 'AC_INIT\(\[NsCDE\], \K[0-9.]+' configure.ac)
+          sed -i "s/^pkgver=.*/pkgver=$VERSION/" pkg/pacman/PKGBUILD
+
+          # Source tarball named nscde-zh-$VERSION.tar.gz as the PKGBUILD expects
+          cp -a "$PWD" /tmp/nscde-zh-$VERSION
+          (cd /tmp && tar cpzf nscde-zh-$VERSION.tar.gz nscde-zh-$VERSION)
+          cp /tmp/nscde-zh-$VERSION.tar.gz pkg/pacman/
+
+          # makepkg refuses to run as root; run it as an unprivileged user
+          useradd -m builder
+          chown -R builder:builder "$GITHUB_WORKSPACE" /home/builder
+          su builder -c "cd '$GITHUB_WORKSPACE/pkg/pacman' && makepkg --noconfirm"
+
+      - name: Upload Arch artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nscde-zh-arch-${{ matrix.arch }}
+          path: pkg/pacman/*.pkg.tar.*
