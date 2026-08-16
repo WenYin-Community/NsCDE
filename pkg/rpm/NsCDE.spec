@@ -60,6 +60,12 @@ autoreconf -ivf
 
 %install
 %make_install
+# Fedora usrmerge: the ksh and python3 packages only provide /usr/bin paths.
+# configure may write /usr/sbin/ksh93 or /usr/sbin/python3 shebangs, which
+# would make RPM auto-dependency generation emit unresolvable file requires.
+# Normalize every /usr/sbin interpreter shebang to /usr/bin.
+grep -rlI '^#!.*/usr/sbin/' %{buildroot} 2>/dev/null | \
+	xargs -r sed -i 's|^#! */usr/sbin/|#!/usr/bin/|' 2>/dev/null || true
 
 %files
 %{_bindir}/*
