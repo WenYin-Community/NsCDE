@@ -104,8 +104,8 @@ jobs:
 
           # Local source tarball (top dir named NsCDE-$VERSION) so rpmbuild
           # does not try to download it from GitHub.
-          cp -a "$PWD" /tmp/nscde-zh-$VERSION
-          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/NsCDE-$VERSION.tar.gz" nscde-zh-$VERSION)
+          cp -a "$PWD" /tmp/NsCDE-$VERSION
+          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/NsCDE-$VERSION.tar.gz" NsCDE-$VERSION)
 
           rpmbuild --define "_topdir $GITHUB_WORKSPACE/rpmbuild" -bb rpmbuild/SPECS/NsCDE.spec
 
@@ -133,7 +133,7 @@ jobs:
             imagemagick xorg-xprop xorg-xrdb xorg-xset xorg-xdpyinfo \
             xorg-xrefresh xorg-xmodmap xorg-xrandr xorgproto gcc xterm \
             python python-pyxdg python-yaml python-psutil python-pyqt5 \
-            xdotool xdg-utils gettext groff ttf-dejavu
+            xdotool xdg-utils gettext groff ttf-dejavu wqy-bitmapfont
 
       - name: Build Arch package
         run: |
