@@ -1,5 +1,5 @@
 Name:		NsCDE-zh
-Version:	2.4.1
+Version:	2.4.2
 Release:	1%{?dist}
 Summary:	Not so Common Desktop Environment
 
