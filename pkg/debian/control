@@ -27,7 +27,7 @@ Depends:
  nscde-zh-icon-theme (= ${source:Version}),
  ${shlibs:Depends},
  ${misc:Depends},
- fvwm | fvwm3,
+ fvwm3 | fvwm,
  imagemagick,
  ksh93u+m,
  python3,
@@ -39,7 +39,8 @@ Depends:
  x11-xserver-utils,
  xdotool,
  xdg-utils,
- xterm
+ xterm,
+ fonts-wqy-bitmap
 Recommends:
  dunst,
  fonts-dejavu-core,
@@ -47,7 +48,6 @@ Recommends:
  qt5-style-plugins,
  rofi,
  stalonetray,
- fonts-wqy-zenhei,
  xclip,
  xscreensaver,
  xsettingsd
