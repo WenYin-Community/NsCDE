@@ -11,7 +11,7 @@ all who care. I'll be back. :-)
 
 ## 简体中文汉化版（NsCDE-zh）
 
-本项目是 [NsCDE](https://github.com/NsCDE/NsCDE) 的**简体中文汉化分支**，在保留原版 CDE 复古风格与完整功能的基础上，对界面进行了全面简体中文本地化。
+本项目是 [NsCDE](https://github.com/NsCDE/NsCDE) 的**简体中文汉化分支**，在保留原版 CDE 复古风格与完整功能的基础上，对界面进行了全面简体中文本地化。本仓库由旧开发仓库 [wenyinos/NsCDE-zh](https://github.com/wenyinos/NsCDE-zh)（已归档）迁移而来，为**当前正式维护仓库**。
 
 **汉化范围**：
 - 全部 26 个 gettext 翻译域（FVWM 菜单、FvwmScript 对话框、样式管理器、启动/迁移脚本、Python 工具）**100% 简体中文化**
