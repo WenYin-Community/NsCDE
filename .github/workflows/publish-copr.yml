@@ -62,14 +62,44 @@ jobs:
           chmod 600 ~/.config/copr
 
       - name: Trigger COPR build (SCM from GitHub)
+        id: copr
         run: |
           VERSION="${{ steps.version.outputs.ver }}"
           echo "Triggering COPR build of NsCDE-zh @ ${VERSION} ..."
-          copr-cli buildscm --nowait ruojiner/NsCDE-zh \
+          OUT=$(copr-cli buildscm --nowait ruojiner/NsCDE-zh \
             --clone-url https://github.com/WenYin-Community/NsCDE.git \
             --commit "$VERSION" \
             --subdir pkg/rpm \
-            --spec NsCDE.spec
+            --spec NsCDE.spec 2>&1)
+          echo "$OUT"
+          BUILD_ID=$(echo "$OUT" | grep -oE '[0-9]+' | tail -1)
+          if [ -z "$BUILD_ID" ]; then
+            echo "::error::Could not determine COPR build ID"
+            exit 1
+          fi
+          echo "build_id=$BUILD_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for COPR build to finish
+        run: |
+          BUILD_ID="${{ steps.copr.outputs.build_id }}"
+          echo "Watching COPR build $BUILD_ID (up to 30 min) ..."
+          for i in $(seq 1 60); do
+            STATE=$(copr-cli status "$BUILD_ID" 2>/dev/null | head -1)
+            echo "  build $BUILD_ID: $STATE"
+            case "$STATE" in
+              succeeded)
+                echo "COPR build $BUILD_ID succeeded"
+                exit 0
+                ;;
+              failed|error)
+                echo "::error::COPR build $BUILD_ID failed"
+                exit 1
+                ;;
+            esac
+            sleep 30
+          done
+          echo "::error::COPR build $BUILD_ID timed out"
+          exit 1
 
       - name: Report build status
         run: |
