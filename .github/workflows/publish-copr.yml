@@ -66,7 +66,6 @@ jobs:
           VERSION="${{ steps.version.outputs.ver }}"
           echo "Triggering COPR build of NsCDE-zh @ ${VERSION} ..."
           copr-cli buildscm --nowait ruojiner/NsCDE-zh \
-            --package-name NsCDE-zh \
             --clone-url https://github.com/WenYin-Community/NsCDE.git \
             --commit "$VERSION" \
             --subdir pkg/rpm \
