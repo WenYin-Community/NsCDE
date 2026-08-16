@@ -103,18 +103,46 @@ else
    echo "Notice: ${FVWM_USERDIR}/Xset.conf does not exist"
 fi
 
-# Start a Secret Service provider (gnome-keyring or KDE wallet) so that
-# browser cookies and passwords use the same encryption key as in the
-# GNOME/KDE desktop session. Skipped if a provider is already running.
+# Start a Secret Service provider so that browser cookies and passwords
+# use the same encryption key as in the GNOME/KDE desktop session.
+# The desktop backend is chosen from the user's wallet data:
+#   KDE:   kwalletrc present or ~/.local/share/kwalletd* data exists
+#   GNOME: ~/.local/share/keyrings data exists (and no KDE wallet data)
+# Skipped if a provider is already running.
 if ! busctl --user call org.freedesktop.DBus /org/freedesktop/DBus \
      org.freedesktop.DBus NameHasOwner s org.freedesktop.secrets 2>/dev/null | grep -q true; then
-   if [ -x /usr/bin/gnome-keyring-daemon ]; then
-      eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets 2>/dev/null)
-      export SSH_AUTH_SOCK
-   elif [ -x /usr/bin/kwalletd6 ]; then
-      /usr/bin/kwalletd6 >/dev/null 2>&1 &
-   elif [ -x /usr/bin/kwalletd5 ]; then
-      /usr/bin/kwalletd5 >/dev/null 2>&1 &
+   if [ -r "${HOME}/.config/kwalletrc" ] || [ -d "${HOME}/.local/share/kwalletd" ]; then
+      # KDE user: use KDE's KSecretService to match the KDE session
+      if [ -x /usr/bin/ksecretd ]; then
+         /usr/bin/ksecretd >/dev/null 2>&1 &
+      elif [ -x /usr/bin/kwalletd6 ]; then
+         /usr/bin/kwalletd6 >/dev/null 2>&1 &
+      elif [ -x /usr/bin/kwalletd5 ]; then
+         /usr/bin/kwalletd5 >/dev/null 2>&1 &
+      elif [ -x /usr/bin/gnome-keyring-daemon ]; then
+         eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets 2>/dev/null)
+         export SSH_AUTH_SOCK
+      fi
+   elif [ -d "${HOME}/.local/share/keyrings" ]; then
+      # GNOME user: prefer gnome-keyring
+      if [ -x /usr/bin/gnome-keyring-daemon ]; then
+         eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets 2>/dev/null)
+         export SSH_AUTH_SOCK
+      elif [ -x /usr/bin/ksecretd ]; then
+         /usr/bin/ksecretd >/dev/null 2>&1 &
+      fi
+   else
+      # No wallet data yet: prefer whatever is installed
+      if [ -x /usr/bin/gnome-keyring-daemon ]; then
+         eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets 2>/dev/null)
+         export SSH_AUTH_SOCK
+      elif [ -x /usr/bin/ksecretd ]; then
+         /usr/bin/ksecretd >/dev/null 2>&1 &
+      elif [ -x /usr/bin/kwalletd6 ]; then
+         /usr/bin/kwalletd6 >/dev/null 2>&1 &
+      elif [ -x /usr/bin/kwalletd5 ]; then
+         /usr/bin/kwalletd5 >/dev/null 2>&1 &
+      fi
    fi
 fi
 

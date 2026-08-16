@@ -1,5 +1,5 @@
 Name:		NsCDE-zh
-Version:	2.4.2
+Version:	2.4.3
 Release:	1%{?dist}
 Summary:	Not so Common Desktop Environment
 
@@ -28,10 +28,10 @@ Requires:	xterm ksh sed cpp xsettingsd stalonetray dunst xclip xdotool
 Requires:	(fvwm3 or fvwm)
 Requires:	python3-pyxdg python3-psutil qt5ct
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
-Requires: python3-pyyaml python3-qt5 qt5-qtstyleplugins dex-autostart groff-base dejavu-serif-fonts
+Requires: python3-pyyaml qt5-qtstyleplugins dex-autostart groff-base dejavu-serif-fonts
 %endif
 %if 0%{?suse_version}
-Requires: python3-qt5 python3-pyaml libqt5-qtstyleplugins-platformtheme-gtk2 dex groff-full dejavu-fonts
+Requires: python3-pyaml libqt5-qtstyleplugins-platformtheme-gtk2 dex groff-full dejavu-fonts
 %endif
 Requires:	wqy-bitmap-fonts
 Requires:	%{_bindir}/convert
