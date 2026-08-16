@@ -5,7 +5,7 @@ Summary:	Not so Common Desktop Environment
 
 License:	GPLv3
 URL:		https://github.com/WenYin-Community/NsCDE
-Source0:	https://codeload.github.com/WenYin-Community/NsCDE/tar.gz/refs/tags/%{version}
+Source0:	https://github.com/WenYin-Community/NsCDE/archive/refs/tags/%{version}.tar.gz
 
 BuildRequires:  ksh
 BuildRequires:  gcc

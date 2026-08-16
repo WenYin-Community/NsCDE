@@ -102,10 +102,10 @@ jobs:
           mkdir -p rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
           cp pkg/rpm/NsCDE.spec rpmbuild/SPECS/
 
-          # Local source tarball (top dir named NsCDE-$VERSION) so rpmbuild
-          # does not try to download it from GitHub.
+          # Local source tarball named to match Source0 basename
+          # (<version>.tar.gz) so rpmbuild uses it instead of downloading.
           cp -a "$PWD" /tmp/NsCDE-$VERSION
-          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/NsCDE-$VERSION.tar.gz" NsCDE-$VERSION)
+          (cd /tmp && tar cpzf "$GITHUB_WORKSPACE/rpmbuild/SOURCES/$VERSION.tar.gz" NsCDE-$VERSION)
 
           rpmbuild --define "_topdir $GITHUB_WORKSPACE/rpmbuild" -bb rpmbuild/SPECS/NsCDE.spec
 
