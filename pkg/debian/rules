@@ -6,7 +6,6 @@ include /usr/share/dpkg/architecture.mk
 	dh $@ --without autoreconf
 
 override_dh_auto_configure:
-	autoreconf -ivf
 	KSH=/usr/bin/ksh93 dh_auto_configure -- \
 		--prefix=/usr \
 		--sysconfdir=/etc \
@@ -17,11 +16,6 @@ override_dh_auto_configure:
 # execute_after_dh_auto_install and dh_install work as before.
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp
-
-override_dh_auto_build:
-	touch aclocal.m4 configure
-	find . -name Makefile.in -exec touch {} +
-	dh_auto_build
 
 execute_after_dh_auto_install:
 	mkdir -p debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/NsCDE

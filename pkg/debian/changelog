@@ -1,3 +1,10 @@
+nscde-zh (2.4.3.3-1) unstable; urgency=low
+  * Fix stale po/Makefile.in missing zh_CN locale files in deb/Arch packages
+  * Refresh autotools generated files
+  * Remove unnecessary autoreconf hack from debian/rules
+
+ -- Wenyin Root <ruojiner@hotmail.com>  Sun, 17 Aug 2026 22:00:00 +0800
+
 nscde-zh (2.4.3.2-1) unstable; urgency=low
   * Version 2.4.3.2
 
