@@ -22,8 +22,6 @@ Vcs-Git: https://github.com/WenYin-Community/NsCDE.git
 Package: nscde-zh
 Architecture: any
 Depends:
- nscde-zh-data (= ${source:Version}),
- nscde-zh-icon-theme (= ${source:Version}),
  ${shlibs:Depends},
  ${misc:Depends},
  fvwm3 | fvwm,
@@ -42,7 +40,6 @@ Depends:
 Recommends:
  dunst,
  fonts-dejavu-core,
- nscde-zh-doc,
  qt5-style-plugins,
  rofi,
  stalonetray,
@@ -69,33 +66,4 @@ Description: Not so Common Desktop Environment
  lightweight hybrid desktop environment.
 
 
-Package: nscde-zh-data
-Architecture: all
-Depends:
- ${misc:Depends},
- ksh93u+m,
- python3:any,
- python3-psutil,
- python3-xdg,
- python3-yaml
-Description: data files for NsCDE
- This package contains architecture-independent data files used by NsCDE,
- including FVWM configuration, palettes, backdrops, templates, integration
- files, localization files, and supporting scripts.
 
-Package: nscde-zh-icon-theme
-Architecture: all
-Depends:
- ${misc:Depends}
-Description: icon theme for NsCDE
- This package contains the NsCDE icon theme used by the NsCDE desktop
- environment and its XDG desktop integration.
-
-Package: nscde-zh-doc
-Architecture: all
-Section: doc
-Depends:
- ${misc:Depends}
-Description: documentation for NsCDE
- This package contains user documentation, examples, release notes, and
- HTML/PDF documentation for the NsCDE desktop environment.
