@@ -17,6 +17,14 @@ override_dh_auto_configure:
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp
 
+# Git checkout does not preserve mtimes; without touching the generated
+# autotools files make would try to regenerate them with aclocal-1.18,
+# which is not available in the Ubuntu build environment.
+override_dh_auto_build:
+	touch aclocal.m4 configure
+	find . -name Makefile.in -exec touch {} +
+	dh_auto_build
+
 execute_after_dh_auto_install:
 	mkdir -p debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/NsCDE
 	mkdir -p debian/tmp/usr/libexec/NsCDE/$(DEB_HOST_MULTIARCH)
