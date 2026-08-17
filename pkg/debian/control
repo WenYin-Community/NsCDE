@@ -38,7 +38,7 @@ Depends:
  xdotool,
  xdg-utils,
  xterm,
- fonts-wqy-bitmap
+ xfonts-wqy
 Recommends:
  dunst,
  fonts-dejavu-core,
