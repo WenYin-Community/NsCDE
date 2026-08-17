@@ -6,6 +6,7 @@ include /usr/share/dpkg/architecture.mk
 	dh $@ --without autoreconf
 
 override_dh_auto_configure:
+	autoreconf -ivf
 	KSH=/usr/bin/ksh93 dh_auto_configure -- \
 		--prefix=/usr \
 		--sysconfdir=/etc \

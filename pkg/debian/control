@@ -5,6 +5,8 @@ Maintainer: Hegel3DReloaded <nscde@protonmail.com>
 Build-Depends:
  debhelper-compat (= 13),
  gettext,
+ autoconf,
+ automake,
  ksh93u+m,
  libx11-dev,
  libxext-dev,
