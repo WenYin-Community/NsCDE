@@ -25,6 +25,7 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
  fvwm3 | fvwm,
+ gettext,
  imagemagick,
  ksh93u+m,
  python3,
