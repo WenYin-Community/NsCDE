@@ -11,6 +11,12 @@ override_dh_auto_configure:
 		--sysconfdir=/etc \
 		--libdir=/usr/lib
 
+# With a single binary package dh_auto_install would install directly into
+# debian/<pkg>/; keep the debian/tmp staging area so that
+# execute_after_dh_auto_install and dh_install work as before.
+override_dh_auto_install:
+	dh_auto_install --destdir=debian/tmp
+
 override_dh_auto_build:
 	touch aclocal.m4 configure
 	find . -name Makefile.in -exec touch {} +
